@@ -2,9 +2,22 @@
 
 This project is to analyze the similarity between two audios.
 
-## Getting Started
+## Building the Application
+>Depends on [fpcalc](https://github.com/acoustid/chromaprint) linux extension
 
-Start by not writing any code.
+### Install fpcalc
+```
+sudo wget https://github.com/acoustid/chromaprint/releases/download/v1.4.3/chromaprint-fpcalc-1.4.3-linux-x86_64.tar.gz
+sudo tar -zxvf chromaprint-fpcalc-1.4.3-linux-x86_64.tar.gz
+sudo mv /usr/local/chromaprint-fpcalc-1.4.3-linux-x86_64/fpcalc /usr/local/bin
+```
+
+```
+fpcalc -version
+fpcalc version 1.4.3
+```
+
+## Getting Started
 
 ```
 first, _ := fingerprint.GetFingerPrintInfo("first.mp3")
@@ -16,6 +29,7 @@ fmt.Println(similarity)
 ## Benchmark
 ```php
 go test -test.bench="BenchmarkSongFpCompare" -benchmem -benchtime=30s -cpuprofile profile_cpu.out
+
 go tool pprof -svg profile_cpu.out > profile_cpu.svg
 ```
 
@@ -24,4 +38,7 @@ go tool pprof -svg profile_cpu.out > profile_cpu.svg
 >Gochroma can only match exactly
 
 ### [chromaprint](https://github.com/acoustid/chromaprint)
+
+## Thanks
+- [nay-kang](https://github.com/nay-kang) Provide python script
 
